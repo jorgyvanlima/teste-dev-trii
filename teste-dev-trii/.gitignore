@@ -1,0 +1,40 @@
+# Ignorar arquivos de sistema
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Ignorar editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+*.sublime-project
+*.sublime-workspace
+
+# Ignorar arquivos de node (se usar npm no futuro)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Ignorar arquivos de build
+dist/
+build/
+
+# Ignorar arquivos de teste
+coverage/
+
+# Ignorar variáveis de ambiente
+.env
+.env.local
+
+# Ignorar arquivos compactados (exceto para entrega)
+*.zip
+*.tar
+*.tar.gz
