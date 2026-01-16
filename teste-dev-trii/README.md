@@ -127,10 +127,7 @@ teste-dev-trii/
 │   └── Documentação completa (este arquivo)
 │
 ├── 🔧 .gitignore
-│   └── Configuração para versionamento
-│
-└── 📋 INSTRUCOES_ENTREGA.txt
-    └── Guia de uso e entrega
+│   └── Configuração para versionamento 
 ```
 
 ---
@@ -316,8 +313,8 @@ Fico à disposição para discussões sobre o projeto, arquitetura, decisões t�
 
 **GitHub:** [jorgyvanlima](https://github.com/jorgyvanlima)  
 **Repositório:** [teste-dev-trii](https://github.com/jorgyvanlima/teste-dev-trii)  
-**LinkedIn:** [Seu LinkedIn]  
-**Email:** [Seu Email]
+**LinkedIn:** [https://www.linkedin.com/in/jorgyvan-lima/]  
+
 
 ---
 
