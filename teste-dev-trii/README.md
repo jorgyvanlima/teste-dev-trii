@@ -24,7 +24,7 @@ Como candidato entusiasmado ao programa de estágio em desenvolvimento na Trii, 
 
 ## 👨‍💻 Sobre o Desenvolvedor
 
-**Nome:** Jorge Yvan Lima
+**Nome:** Jorgyvan Lima
 
 **Formação:**
 - 📚 4º Semestre - Bacharelado em **Sistemas de Informação**
