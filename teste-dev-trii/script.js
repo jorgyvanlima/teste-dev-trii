@@ -10,10 +10,62 @@ function isValidPhone(phone) {
     return phoneRegex.test(phone) && phone.replace(/\D/g, '').length >= 10;
 }
 
+// Validação de CPF
+function isValidCPF(cpf) {
+    // Remove caracteres não numéricos
+    cpf = cpf.replace(/\D/g, '');
+    
+    // Verifica se tem 11 dígitos
+    if (cpf.length !== 11) return false;
+    
+    // Verifica se todos os dígitos são iguais (CPF inválido)
+    if (/^(\d)\1+$/.test(cpf)) return false;
+    
+    // Validação dos dígitos verificadores
+    let sum = 0;
+    let remainder;
+    
+    // Valida primeiro dígito
+    for (let i = 1; i <= 9; i++) {
+        sum += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    }
+    remainder = (sum * 10) % 11;
+    if (remainder === 10 || remainder === 11) remainder = 0;
+    if (remainder !== parseInt(cpf.substring(9, 10))) return false;
+    
+    // Valida segundo dígito
+    sum = 0;
+    for (let i = 1; i <= 10; i++) {
+        sum += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+    }
+    remainder = (sum * 10) % 11;
+    if (remainder === 10 || remainder === 11) remainder = 0;
+    if (remainder !== parseInt(cpf.substring(10, 11))) return false;
+    
+    return true;
+}
+
+// Máscara de CPF
+function maskCPF(value) {
+    value = value.replace(/\D/g, ''); // Remove tudo que não é dígito
+    value = value.replace(/(\d{3})(\d)/, '$1.$2'); // Coloca ponto após os 3 primeiros dígitos
+    value = value.replace(/(\d{3})(\d)/, '$1.$2'); // Coloca ponto após os 3 segundos dígitos
+    value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Coloca hífen antes dos 2 últimos dígitos
+    return value;
+}
+
 // Obter elementos do formulário
 const form = document.getElementById('budgetForm');
 const inputs = form.querySelectorAll('.form-input');
 const successMessage = document.getElementById('successMessage');
+const cpfInput = document.getElementById('cpf');
+
+// Adicionar máscara de CPF
+if (cpfInput) {
+    cpfInput.addEventListener('input', function(e) {
+        e.target.value = maskCPF(e.target.value);
+    });
+}
 
 // Adicionar eventos de validação em tempo real
 inputs.forEach(input => {
@@ -46,6 +98,12 @@ function validateField(event) {
                 if (!isValidEmail(fieldValue)) {
                     isValid = false;
                     errorMessage = 'E-mail inválido';
+                }
+                break;
+            case 'cpf':
+                if (!isValidCPF(fieldValue)) {
+                    isValid = false;
+                    errorMessage = 'CPF inválido';
                 }
                 break;
             case 'telefone':
