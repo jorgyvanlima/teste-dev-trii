@@ -48,10 +48,10 @@ function isValidCPF(cpf) {
 // Máscara de CPF
 function maskCPF(value) {
     value = value.replace(/\D/g, ''); // Remove tudo que não é dígito
-    value = value.replace(/(\d{3})(\d)/, '$1.$2'); // Coloca ponto após os 3 primeiros dígitos
-    value = value.replace(/(\d{3})(\d)/, '$1.$2'); // Coloca ponto após os 3 segundos dígitos
-    value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Coloca hífen antes dos 2 últimos dígitos
-    return value;
+    if (value.length <= 3) return value;
+    if (value.length <= 6) return value.replace(/(\d{3})(\d+)/, '$1.$2');
+    if (value.length <= 9) return value.replace(/(\d{3})(\d{3})(\d+)/, '$1.$2.$3');
+    return value.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, '$1.$2.$3-$4');
 }
 
 // Obter elementos do formulário
